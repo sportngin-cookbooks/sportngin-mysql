@@ -1,4 +1,4 @@
-name             'sportngin-mysql-cookbook'
+name             'sportngin-mysql'
 maintainer       'Sport Ngin, Inc.'
 maintainer_email 'infrastructure@sportngin.com'
 license          'All rights reserved'
