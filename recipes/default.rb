@@ -22,3 +22,5 @@ execute "update-yum" do
   command "yum -y clean all"
   action :nothing
 end
+
+include_recipe "mysql::server"
