@@ -1,6 +1,6 @@
-node['mysql']['server']['percona']['version'] = '5.5'
-node['mysql']['server']['percona']['patch_level'] = '28'
-node['mysql']['server']['percona']['release'] = '29.3'
-node['mysql']['server']['percona']['tag'] = '388'
+default['mysql']['server']['percona']['version'] = '5.5'
+default['mysql']['server']['percona']['patch_level'] = '28'
+default['mysql']['server']['percona']['release'] = '29.3'
+default['mysql']['server']['percona']['tag'] = '388'
 
-node['mysql']['server']['packages'].set([])
+override['mysql']['server']['packages'] = []
