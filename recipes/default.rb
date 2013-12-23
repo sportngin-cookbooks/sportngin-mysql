@@ -10,7 +10,7 @@ cookbook_file package_path do
     action :create
 end
 
-rpm_package "Percona-Server-server-#{version.gsub(".","")}" do
+package "Percona-Server-server-#{version.gsub(".","")}" do
     source package_path
     action :install
 end
