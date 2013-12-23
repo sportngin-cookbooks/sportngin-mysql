@@ -1,26 +1,17 @@
-package "yum-utils"
+version = node[:mysql][:server][:percona][:version]
+patch_level = node[:mysql][:server][:percona][:version]
+release = node[:mysql][:server][:percona][:release]
+tag = node[:mysql][:server][:percona][:tag]
+package_path = "#{Chef::Config[:file_cache_path]}/Percona-Server-server-#{version}#{patch_level}-rel#{release}.rpm"
 
-mysql_release_rpm = "/var/chef/cache/mysql-community-release.rpm"
-cookbook_file "mysql-community-release.rpm" do
-  path mysql_release_rpm
-  notifies :run, "execute[add-mysql-package-repo]", :immediately
+
+remote_file package_path do
+    source "http://www.percona.com/redir/downloads/Percona-Server-#{version}/Percona-Server-#{version}.#{patch_level}-#{release}/RPM/rhel6/x86_64/Percona-Server-server-#{version.gsub(".","")}-#{version}.#{patch_level}-rel#{release}.#{tag}.rhel6.x86_64.rpm"
+    action :create
 end
 
-execute "add-mysql-package-repo" do
-  command "yum -y localinstall #{mysql_release_rpm}"
-  action :nothing
-  notifies :run, "execute[enable-mysql55]", :immediately
+rpm_package "Percona-Server-server-#{version.gsub(".","")}" do
+    source package_path
+    action :install
 end
-
-execute "enable-mysql55" do
-  command "yum-config-manager --disable mysql56-community && yum-config-manager --enable mysql55-community"
-  action :nothing
-  notifies :run, "execute[update-yum]", :immediately
-end
-
-execute "update-yum" do
-  command "yum -y clean all"
-  action :nothing
-end
-
 include_recipe "mysql::server"
