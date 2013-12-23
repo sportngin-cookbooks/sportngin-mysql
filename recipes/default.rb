@@ -2,7 +2,7 @@ version = node[:mysql][:server][:percona][:version]
 patch_level = node[:mysql][:server][:percona][:patch_level]
 release = node[:mysql][:server][:percona][:release]
 tag = node[:mysql][:server][:percona][:tag]
-package_path = "#{Chef::Config[:file_cache_path]}/Percona-Server-server-#{version}#{patch_level}-rel#{release}.rpm"
+package_path = "#{Chef::Config[:file_cache_path]}/Percona-Server-server-#{version}.#{patch_level}-rel#{release}.rpm"
 
 
 remote_file package_path do
