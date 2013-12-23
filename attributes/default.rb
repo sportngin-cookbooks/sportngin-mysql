@@ -5,4 +5,4 @@ default['mysql']['server']['percona']['tag'] = '388'
 default['mysql']['server']['percona']['packages'] = ['shared','client','server']
 default['mysql'['service_name'] = 'mysql'
 
-override['mysql']['server']['packages'] = []
+default['mysql']['server']['packages'] = []
