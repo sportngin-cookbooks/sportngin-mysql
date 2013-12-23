@@ -4,5 +4,5 @@ default['mysql']['server']['percona']['release'] = '29.3'
 default['mysql']['server']['percona']['tag'] = '388'
 default['mysql']['server']['percona']['packages'] = ['shared','client','server']
 
-override['mysql']['service_name'] = 'mysql'
+override['mysql']['server']['service_name'] = 'mysql'
 override['mysql']['server']['packages'] = []
