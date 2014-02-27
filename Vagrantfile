@@ -52,9 +52,6 @@ Vagrant.configure("2") do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
 
-  config.ssh.max_tries = 40
-  config.ssh.timeout   = 120
-
   # The path to the Berksfile to use with Vagrant Berkshelf
   # config.berkshelf.berksfile_path = "./Berksfile"
 
@@ -80,7 +77,7 @@ Vagrant.configure("2") do |config|
     }
 
     chef.run_list = [
-        "recipe[sportngin-mysql-cookbook::default]"
+        "recipe[sportngin-mysql::default]"
     ]
   end
 end
